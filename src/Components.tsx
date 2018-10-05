@@ -1,34 +1,27 @@
 import React from 'react';
-import { withAlgorithm } from './algorithmContext';
+import { withAlgorithm } from './context';
 import { steps } from './algorithm';
 
 // tslint:disable:jsx-no-lambda
-const Dumb = ({ name, finishStep, isFinishing }) => (
+const Dumb = ({ name, finishStep }) => (
   <div>
     {name}
-    <button
-      onClick={() => {
-        finishStep(1);
-      }}
-      disabled={isFinishing}
-    >
-      Next
-    </button>
+    <button onClick={() => { finishStep(1); }}>Next</button>
   </div>
 );
 // tslint:enable:jsx-no-lambda
 
-export const ComponentA = withAlgorithm({
-  name: 'ComponentA',
+export const Component1 = withAlgorithm({
+  name: 'Component1',
   step: steps.STEP1
 })(Dumb);
 
-export const ComponentB = withAlgorithm({
-  name: 'ComponentB',
+export const Component2 = withAlgorithm({
+  name: 'Component2',
   step: steps.STEP2
 })(Dumb);
 
-export const ComponentC = withAlgorithm({
-  name: 'ComponentC',
+export const Component3 = withAlgorithm({
+  name: 'Component3',
   step: steps.STEP3
 })(Dumb);
