@@ -1,6 +1,6 @@
 {
   "name": "react-algorithm",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "author": "Ivan Lysov",
   "keywords": [
     "react",
@@ -10,8 +10,8 @@
     "saga"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/lysoff/react-algorithm.git"
+    "type": "git",
+    "url": "https://github.com/lysoff/react-algorithm.git"
   },
   "license": "MIT",
   "main": "build/dist/react-algorithm/index.js",
