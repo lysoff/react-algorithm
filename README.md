@@ -53,6 +53,8 @@ export const algorithm = (stepToFinish: string, result: any) => {
 }
 ```
 
+NOTE: algorithm might be not that consequent, check result to complicate the logic
+
 ### AlgorithmProvider
 
 `react-algorithm` uses `React.Context` under the hood and all steps should be within `<AlgorithmProvider />` that we created earlier. Let's render provider and pass `algorithm` function as a prop:
