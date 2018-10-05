@@ -1,4 +1,4 @@
 export type AlgorithmContext = {
-  currentSteps: string[];
+  currentStep: string | undefined;
   finishStep: any;
 }

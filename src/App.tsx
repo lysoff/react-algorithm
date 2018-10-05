@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component1, Component2, Component3 } from './Components';
+import { Component1, Component2, Component3, Footer } from './Components';
 import { steps, algorithm } from './algorithm';
 import { AlgorithmProvider } from './context';
 
@@ -29,12 +29,10 @@ export default class App extends React.Component<{}, State> {
           initialStep={steps.STEP1}
           algorithm={algorithm}
         >
-          <div>{a}</div>
-          <div>{b}</div>
-          <div>{c}</div>
-          <Component1 onStepFinished={() => this.onChange({ a: 7 })} />
-          <Component2 onStepFinished={() => this.onChange({ b: 7 })} />
-          <Component3 onStepFinished={() => this.onChange({ c: 7 })} />
+          <Component1 />
+          <Component2 />
+          <Component3 />
+          <Footer />
         </AlgorithmProvider>
       </div>
     );

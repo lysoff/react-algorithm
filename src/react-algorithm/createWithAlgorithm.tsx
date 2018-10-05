@@ -2,36 +2,38 @@ import React from 'react';
 import { AlgorithmContext } from './types';
 
 type HOCProps = {
-  name: string;
-  step: string;
+  step?: string;
+  [key: string]: any;
 };
 
-type WrappedComponentProps = {
-  onStepFinished: any;
+export type WrappedComponentProps = {
+  isCurrentStep: boolean;
+  currentStep: string | undefined;
+  finishStep: any;
+  step: string | undefined;
 };
 
-export default (context: React.Context<AlgorithmContext>) => ({
-  name,
-  step
-}: HOCProps) => (WrapperComponent: any) => ({
-  onStepFinished,
-  ...props
-}: WrappedComponentProps) => {
+export default (context: React.Context<AlgorithmContext>) => (
+  { step, ...hocProps }: HOCProps = { step: undefined }
+) => (WrapperComponent: React.ComponentClass<WrappedComponentProps> | React.SFC<WrappedComponentProps>) => () => {
   return (
     <context.Consumer>
-      {({ finishStep, currentSteps }: AlgorithmContext) => {
-        if (currentSteps.indexOf(step) === -1) {
-          return null;
-        }
+      {({ finishStep, currentStep }: AlgorithmContext) => {
+        const isCurrentStep = currentStep === step;
 
-        const finishStepFunction = (result: any) => finishStep(step, result, onStepFinished);
+        const finishStepFunction = (result: any) => {
+          if (!step || isCurrentStep) {
+            finishStep(currentStep, result);
+          }
+        };
 
         return (
           <WrapperComponent
-            name={name}
-            currentSteps={currentSteps}
+            isCurrentStep={isCurrentStep}
+            currentStep={currentStep}
             finishStep={finishStepFunction}
-            {...props}
+            step={step}
+            {...hocProps}
           />
         );
       }}
