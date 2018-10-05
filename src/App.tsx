@@ -1,22 +1,45 @@
-import * as React from 'react';
-import './App.css';
+import React from 'react';
+import { ComponentA, ComponentB, ComponentC } from './Components';
+import { steps, algorithm } from './algorithm';
+import { AlgorithmProvider } from './algorithmContext';
+// import { Footer } from './Footer';
 
-import logo from './logo.svg';
+type State = {
+  a: number,
+  b: number,
+  c: number;
+};
 
-class App extends React.Component {
+export default class App extends React.Component<{}, State> {
+  public state = {
+    a: 0,
+    b: 0,
+    c: 0
+  };
+
+  private onChange = val => {
+    this.setState(val);
+  };
+
+  // tslint:disable:jsx-no-lambda
   public render() {
+    const { a, b, c } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+      <div>
+        <AlgorithmProvider
+          steps={steps}
+          initialStep={steps.STEP1}
+          algorithm={algorithm}
+        >
+          <div>{a}</div>
+          <div>{b}</div>
+          <div>{c}</div>
+          <ComponentA onStepFinished={() => this.onChange({ a: 7 })} />
+          <ComponentB onStepFinished={() => this.onChange({ b: 7 })} />
+          <ComponentC onStepFinished={() => this.onChange({ c: 7 })} />
+        </AlgorithmProvider>
       </div>
     );
   }
+  // tslint:enable:jsx-no-lambda
 }
-
-export default App;

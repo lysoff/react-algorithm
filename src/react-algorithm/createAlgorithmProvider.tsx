@@ -2,13 +2,13 @@ import React from 'react';
 import { AlgorithmContext } from './types';
 
 type Props = {
-  steps: string[];
+  steps: { [key: string]: string };
   initialStep: string;
-  algorithm: (step: string, result: any) => Promise<string | string[]>;
+  algorithm: (step: string, result: any) => Promise<any>;
 };
 
 type State = {
-  steps: string[];
+  steps: { [key: string]: string };
   currentSteps: string[];
   isFinishing: boolean;
 };
