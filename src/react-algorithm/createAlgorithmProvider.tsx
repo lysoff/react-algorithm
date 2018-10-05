@@ -32,7 +32,10 @@ export default (context: React.Context<AlgorithmContext>) => {
       const stepsToAppend = this.props.algorithm(step, result)
       let currentSteps = [...this.state.currentSteps];
 
-      currentSteps = currentSteps.concat(stepsToAppend);
+      if (stepsToAppend) {
+        currentSteps = currentSteps.concat(stepsToAppend);
+      }
+
       currentSteps.splice(index, 1);
 
       this.setState({
