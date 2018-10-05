@@ -9,6 +9,10 @@
     "algorithm",
     "saga"
   ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/lysoff/react-algorithm.git"
+  },
   "license": "MIT",
   "main": "build/dist/react-algorithm/index.js",
   "types": "build/dist/react-algorithm/index.d.ts",
