@@ -4,7 +4,7 @@ import { AlgorithmContext } from './types';
 type Props = {
   steps: { [key: string]: string };
   initialStep: string;
-  algorithm: (step: string, result: any) => string | string[];
+  algorithm: (step: string, result: any) => string | string[] | null;
 };
 
 type State = {
