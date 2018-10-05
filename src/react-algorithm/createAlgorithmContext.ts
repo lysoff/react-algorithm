@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import createAlgorithmProvider from './createAlgorithmProvider';
 import createWithAlgorithm from './createWithAlgorithm';
 import { AlgorithmContext } from './types';
@@ -9,5 +9,5 @@ export default () => {
   return {
     AlgorithmProvider: createAlgorithmProvider(context),
     withAlgorithm: createWithAlgorithm(context)
-  }
-}
+  };
+};
