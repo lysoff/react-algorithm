@@ -19,7 +19,7 @@ export default (context: React.Context<AlgorithmContext>) => ({
 }: WrappedComponentProps) => {
   return (
     <context.Consumer>
-      {({ finishStep, currentSteps, isFinishing }: AlgorithmContext) => {
+      {({ finishStep, currentSteps }: AlgorithmContext) => {
         if (currentSteps.indexOf(step) === -1) {
           return null;
         }
@@ -31,7 +31,6 @@ export default (context: React.Context<AlgorithmContext>) => ({
             name={name}
             currentSteps={currentSteps}
             finishStep={finishStepFunction}
-            isFinishing={isFinishing}
             {...props}
           />
         );

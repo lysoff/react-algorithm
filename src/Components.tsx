@@ -12,7 +12,7 @@ const Dumb = ({ name, finishStep, isFinishing }) => (
       }}
       disabled={isFinishing}
     >
-      {!isFinishing ? 'Next' : 'Loading...'}
+      Next
     </button>
   </div>
 );

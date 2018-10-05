@@ -5,18 +5,14 @@ export const steps = {
 }
 
 export const algorithm = (stepToFinish: string, result: any) => {
-  return new Promise((resolve, reject) => {
     switch (stepToFinish) {
       case steps.STEP1:
-        setTimeout(() => resolve(steps.STEP2), 1000);
-        break;
+        return steps.STEP2;
       case steps.STEP2:
-        setTimeout(() => resolve(steps.STEP3), 1000);
-        break;
+        return steps.STEP3;
       default:
-        setTimeout(() => resolve(null), 1000);
+        return null;
     }
-  });
 }
 
 

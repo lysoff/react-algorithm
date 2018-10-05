@@ -4,13 +4,12 @@ import { AlgorithmContext } from './types';
 type Props = {
   steps: { [key: string]: string };
   initialStep: string;
-  algorithm: (step: string, result: any) => Promise<any>;
+  algorithm: (step: string, result: any) => string | string[];
 };
 
 type State = {
   steps: { [key: string]: string };
   currentSteps: string[];
-  isFinishing: boolean;
 };
 
 export default (context: React.Context<AlgorithmContext>) => {
@@ -20,8 +19,7 @@ export default (context: React.Context<AlgorithmContext>) => {
 
       this.state = {
         steps: props.steps,
-        currentSteps: [props.initialStep],
-        isFinishing: false,
+        currentSteps: [props.initialStep]
       }
     }
 
@@ -31,32 +29,25 @@ export default (context: React.Context<AlgorithmContext>) => {
         return;
       }
 
-      this.props.algorithm(step, result).then(stepsToAppend => {
-        let currentSteps = [...this.state.currentSteps];
+      const stepsToAppend = this.props.algorithm(step, result)
+      let currentSteps = [...this.state.currentSteps];
 
-        currentSteps = currentSteps.concat(stepsToAppend);
-        currentSteps.splice(index, 1);
-
-        this.setState({
-          currentSteps,
-          isFinishing: false
-        });
-
-        onStepFinished && onStepFinished(result);
-      });
+      currentSteps = currentSteps.concat(stepsToAppend);
+      currentSteps.splice(index, 1);
 
       this.setState({
-        isFinishing: true
+        currentSteps
       });
+
+      onStepFinished && onStepFinished(result);
     }
 
     public render() {
-      const { currentSteps, isFinishing } = this.state;
+      const { currentSteps } = this.state;
 
       return (
         <context.Provider value={{
           currentSteps,
-          isFinishing,
           finishStep: this.finishStep
         }}>
           {this.props.children}
