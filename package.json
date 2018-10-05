@@ -1,8 +1,14 @@
 {
   "name": "react-algorithm",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "author": "Ivan Lysov",
-  "keywords": ["react", "reactjs", "typescript", "algorithm", "saga"],
+  "keywords": [
+    "react",
+    "reactjs",
+    "typescript",
+    "algorithm",
+    "saga"
+  ],
   "license": "MIT",
   "main": "build/dist/react-algorithm/index.js",
   "types": "build/dist/react-algorithm/index.d.ts",
